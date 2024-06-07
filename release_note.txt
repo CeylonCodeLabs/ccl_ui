@@ -1,0 +1,3 @@
+- chore(Release-UI): v0.2.3 (Pasan)
+- refactor(UI-Localization): Package update modifications (Pasan)
+- docs(Change Log): Updated (Pasan)
