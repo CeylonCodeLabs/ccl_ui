@@ -13,7 +13,7 @@ dependencies:
   ccl_services: '>=0.2.2 <1.0.0'
   flutter_support_pack: '>=1.4.1 <2.0.0'
   responsive_builder: ^0.7.0
-  stacked: ^3.4.2
+  stacked: '>=3.4.2 <4.0.0'
 
 dev_dependencies:
   flutter_test:
