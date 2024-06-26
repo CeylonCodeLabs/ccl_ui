@@ -1,0 +1,3 @@
+- chore(Release): v0.2.5 (Pasan Randula Eramusugoda)
+- refactor(Localization): Implementation updates (Pasan Randula Eramusugoda)
+- docs(Release): Updates (Pasan Randula Eramusugoda)
