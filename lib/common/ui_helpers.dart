@@ -82,26 +82,32 @@ const Widget spacedDivider = Column(
 Widget verticalSpace(double height) => SizedBox(height: height);
 
 /// Gets the screen width of the current context.
+@Deprecated('Use context.screanWidth instead')
 double screenWidth(BuildContext context) => sw(context);
 
+/// Gets the screen width of the current context.
+@Deprecated('Use context.sw instead')
 double sw(BuildContext context) => MediaQuery.sizeOf(context).width;
 
 /// Gets the screen height of the current context.
+@Deprecated('Use context.screenHeight instead')
 double screenHeight(BuildContext context) => sh(context);
 
+/// Gets the screen height of the current context.
+@Deprecated('Use context.sh instead')
 double sh(BuildContext context) => MediaQuery.sizeOf(context).height;
 
 /// Gets the fraction of the screen height considering [dividedBy] and [offsetBy],
 /// with a maximum of [max].
 double screenHeightFraction(BuildContext context,
         {int dividedBy = 1, double offsetBy = 0, double max = 3000}) =>
-    min((screenHeight(context) - offsetBy) / dividedBy, max);
+    min((context.sh - offsetBy) / dividedBy, max);
 
 /// Gets the fraction of the screen width considering [dividedBy] and [offsetBy],
 /// with a maximum of [max].
 double screenWidthFraction(BuildContext context,
         {int dividedBy = 1, double offsetBy = 0, double max = 3000}) =>
-    min((screenWidth(context) - offsetBy) / dividedBy, max);
+    min((context.sw - offsetBy) / dividedBy, max);
 
 /// Gets half of the screen width of the current context.
 double halfScreenWidth(BuildContext context) =>
@@ -154,12 +160,12 @@ double getResponsiveFontSize(BuildContext context,
 /// Gets a fraction of the screen width based on the specified [fraction], [offsetBy], and [max] values.
 double getScreenWidthFraction(BuildContext context,
         {double fraction = 1.0, double offsetBy = 0, double max = 3000}) =>
-    min((screenWidth(context) - offsetBy) / fraction, max);
+    min((context.sw - offsetBy) / fraction, max);
 
 /// Gets a fraction of the screen height based on the specified [fraction], [offsetBy], and [max] values.
 double getScreenHeightFraction(BuildContext context,
         {double fraction = 1.0, double offsetBy = 0, double max = 3000}) =>
-    min((screenHeight(context) - offsetBy) / fraction, max);
+    min((context.sh - offsetBy) / fraction, max);
 
 /// Gets the expanded height of the FlexibleSpaceBar based on the current screen
 /// type and the specified [mobile] and [tablet] values.

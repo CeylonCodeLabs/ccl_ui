@@ -2,7 +2,6 @@ import 'dart:math' as math;
 import 'dart:ui';
 
 import 'package:ccl_services/ccl_services.dart';
-import 'package:ccl_ui/ccl_ui.dart';
 import 'package:ccl_ui/common/common.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_support_pack/flutter_support_pack.dart';
