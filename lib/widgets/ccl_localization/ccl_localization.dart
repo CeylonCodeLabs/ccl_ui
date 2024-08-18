@@ -1,10 +1,20 @@
-part of '../widgets.dart';
+
+import 'package:ccl_services/localization/localization_service.dart';
+import 'package:flutter/widgets.dart';
+import 'package:stacked/stacked.dart';
+import 'package:stacked/stacked_annotations.dart';
+
+part 'ccl_localization_model.dart';
+
+part 'ccl_localization_provider.dart';
+
+typedef OnLocaleChanged = Future<void> Function(Locale locale);
 
 /// A widget that provides localization for its child widget.
 ///
 /// This widget listens to the `localeController` stream in the `CCLLocalizationModel`
 /// and rebuilds its child widget with the updated locale using `CCLLocalizationProvider`.
-class CCLLocalization extends StackedView<CCLLocalizationModel> {
+class CCLLocalization extends StackedView<_CCLLocalizationModel> {
   /// The child widget to localize.
   final WidgetBuilder childBuilder;
 
@@ -27,7 +37,7 @@ class CCLLocalization extends StackedView<CCLLocalizationModel> {
   @override
   Widget builder(
     BuildContext context,
-    CCLLocalizationModel viewModel,
+    _CCLLocalizationModel viewModel,
     Widget? child,
   ) {
     return _CCLLocalizationProvider(
@@ -37,11 +47,11 @@ class CCLLocalization extends StackedView<CCLLocalizationModel> {
   }
 
   @override
-  CCLLocalizationModel viewModelBuilder(BuildContext context) =>
-      CCLLocalizationModel(onLocaleChanged, fallbackLocale, supportedLocales);
+  _CCLLocalizationModel viewModelBuilder(BuildContext context) =>
+      _CCLLocalizationModel(onLocaleChanged, fallbackLocale, supportedLocales);
 
   @override
-  void onViewModelReady(CCLLocalizationModel viewModel) => viewModel.init();
+  void onViewModelReady(_CCLLocalizationModel viewModel) => viewModel.init();
 
   @override
   bool get fireOnViewModelReadyOnce => true;

@@ -1,6 +1,6 @@
 library ccl_ui;
 
-export 'common/common.dart'
+export 'package:ccl_ui/common/common.dart'
     show
         sizeTiny,
         sizeLight,
@@ -51,14 +51,14 @@ export 'common/common.dart'
         BuildContextExt,
         TextColorExtension,
         FontWeightExtension;
-export 'widgets/widgets.dart'
+
+export 'package:ccl_ui/widgets/ccl_localization/ccl_localization.dart';
+export 'package:ccl_ui/widgets/ccl_table/ccl_table.dart';
+export 'package:ccl_ui/widgets/notification_icon/notification_icon.dart';
+export 'package:ccl_ui/widgets/progress/background_progress.dart';
+
+export 'package:ccl_ui/widgets/widgets.dart'
     show
-        CCLLocalization,
-        CCLLocalizationProvider,
-        CCLTable,
-        CCLTableRow,
-        CCLTableCell,
-        BackgroundProgress,
         AnimatedText,
         CCLFilledInputBorder,
         DummyView,

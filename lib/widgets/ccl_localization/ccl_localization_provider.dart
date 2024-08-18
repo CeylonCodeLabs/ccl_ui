@@ -1,4 +1,4 @@
-part of '../widgets.dart';
+part of 'ccl_localization.dart';
 
 /// An inherited widget that provides the current locale to its descendants.
 ///

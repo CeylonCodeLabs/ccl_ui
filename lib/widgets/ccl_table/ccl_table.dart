@@ -1,4 +1,8 @@
-part of '../widgets.dart';
+
+import 'package:flutter/material.dart';
+import 'package:flutter_support_pack/flutter_support_pack.dart';
+
+part 'ccl_table_data.dart';
 
 /// A widget that displays a table.
 ///
