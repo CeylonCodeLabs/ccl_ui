@@ -77,10 +77,10 @@ packages:
     dependency: "direct main"
     description:
       name: ccl_services
-      sha256: "14040d115a6b676fde9e06d780234f52857af0c2080dbfda902a1d6d9e96ed62"
+      sha256: "10ffd9f31a18e91a09a34d891cd2d231345a88202b085ac574d1017d0de25e7e"
       url: "https://pub.dev"
     source: hosted
-    version: "0.3.7"
+    version: "0.4.1"
   characters:
     dependency: transitive
     description:
