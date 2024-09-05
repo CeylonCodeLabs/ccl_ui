@@ -10,7 +10,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  ccl_core: '>=0.1.1'
+  ccl_core: '>=0.2.0'
   ccl_services: '>=0.4.1 <1.0.0'
   responsive_builder: '>=0.7.0 <1.0.0'
   stacked: '>=3.4.2 <4.0.0'
@@ -19,9 +19,10 @@ dependencies:
 #dependencies:
 #  flutter:
 #    sdk: flutter
+#  ccl_core:
+#    path: '../ccl_core'
 #  ccl_services:
 #    path: '../ccl_services'
-#  flutter_support_pack: '>=1.4.1 <2.0.0'
 #  responsive_builder: '>=0.7.0 <1.0.0'
 #  stacked: '>=3.4.2 <4.0.0'
 

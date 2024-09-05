@@ -76,19 +76,17 @@ packages:
   ccl_core:
     dependency: "direct main"
     description:
-      name: ccl_core
-      sha256: "9a15bcce01b7bee92817523a8b1142654827ec8578ff00c7f845a8fccfe027b4"
-      url: "https://pub.dev"
-    source: hosted
-    version: "0.1.1"
+      path: "../ccl_core"
+      relative: true
+    source: path
+    version: "0.2.0"
   ccl_services:
     dependency: "direct main"
     description:
-      name: ccl_services
-      sha256: "10ffd9f31a18e91a09a34d891cd2d231345a88202b085ac574d1017d0de25e7e"
-      url: "https://pub.dev"
-    source: hosted
-    version: "0.4.1"
+      path: "../ccl_services"
+      relative: true
+    source: path
+    version: "0.5.0"
   characters:
     dependency: transitive
     description:
@@ -278,14 +276,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "3.1.2"
-  flutter_support_pack:
-    dependency: transitive
-    description:
-      name: flutter_support_pack
-      sha256: f0b7199b6d3edb829b1f1b79f71b4ab3b981b2df97a748f83c0aaca7a9bb7cc8
-      url: "https://pub.dev"
-    source: hosted
-    version: "1.5.0"
   flutter_test:
     dependency: "direct dev"
     description: flutter

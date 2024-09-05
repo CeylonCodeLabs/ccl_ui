@@ -1,5 +1,5 @@
 
-import 'package:ccl_services/localization/localization_service.dart';
+import 'package:ccl_services/ccl_services.dart';
 import 'package:flutter/widgets.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked/stacked_annotations.dart';
