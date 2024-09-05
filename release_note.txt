@@ -1,5 +1,3 @@
-- chore(Release): v0.3.0 (Pasan Eramusugoda)
-- refactor(Code): Arrangement optimization (Pasan Eramusugoda)
-- test(Background Progress): Add tests for the widget (Pasan Eramusugoda)
-- feat(Background Progress): Added progressIndicator and isChildVisibleWhileBusy params (Pasan Eramusugoda)
+- chore(Release): v0.4.0 (Pasan Eramusugoda)
+- build(Package): Package update changes (Pasan Eramusugoda)
 - docs(Release): Updates (Pasan Eramusugoda)
