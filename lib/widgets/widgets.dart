@@ -1,8 +1,8 @@
 import 'dart:math' as math;
 
+import 'package:ccl_core/ccl_core.dart';
 import 'package:ccl_ui/common/common.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_support_pack/flutter_support_pack.dart';
 
 part 'animated_text.dart';
 

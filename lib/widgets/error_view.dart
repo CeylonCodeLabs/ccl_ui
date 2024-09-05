@@ -65,7 +65,7 @@ class ErrorView extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         mainAxisSize: MainAxisSize.min,
         children: <Widget>[
-          if (title.isNotNullOrEmpty)
+          if (title.isNotNullAndNotEmpty)
             Padding(
               padding: const EdgeInsets.all(sizeDefault),
               child: Text(

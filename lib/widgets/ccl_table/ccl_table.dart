@@ -1,6 +1,5 @@
-
+import 'package:ccl_core/ccl_core.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_support_pack/flutter_support_pack.dart';
 
 part 'ccl_table_data.dart';
 
@@ -82,7 +81,7 @@ class CCLTable extends StatelessWidget {
       return TableRow(
         decoration: row.decoration,
         children: row.cells.map((cell) {
-          final child = cell.text.isNotNullOrEmpty
+          final child = cell.text.isNotNullAndNotEmpty
               ? Text(
                   cell.text!,
                   textAlign: cell.textAlign,
@@ -97,7 +96,7 @@ class CCLTable extends StatelessWidget {
                 ? row.padding!.add(cell.padding!)
                 : row.padding ?? cell.padding ?? EdgeInsets.zero,
             decoration: cell.decoration,
-            child: cell.tooltip.isNotNullOrEmpty
+            child: cell.tooltip.isNotNullAndNotEmpty
                 ? Tooltip(
                     message: cell.tooltip,
                     child: child,

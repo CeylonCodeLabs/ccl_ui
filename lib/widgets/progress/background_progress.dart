@@ -1,10 +1,9 @@
 import 'dart:ui';
 
+import 'package:ccl_core/ccl_core.dart';
 import 'package:ccl_ui/common/common.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_support_pack/flutter_support_pack.dart';
 import 'package:stacked/stacked.dart';
-
 
 /// A widget that displays a progress indicator overlay when the provided ViewModel is busy.
 ///
@@ -43,6 +42,8 @@ class BackgroundProgress<T extends BaseViewModel> extends ViewModelWidget<T> {
   /// An optional message to display below the progress indicator.
   final String? message;
 
+  final TextStyle? messageStyle;
+
   /// Whether to blur the background while the progress indicator is shown.
   final bool blurBackground;
 
@@ -57,6 +58,7 @@ class BackgroundProgress<T extends BaseViewModel> extends ViewModelWidget<T> {
       required this.child,
       this.blurBackground = true,
       this.message,
+      this.messageStyle,
       this.progressIndicator,
       this.isChildVisibleWhileBusy = true});
 
@@ -75,20 +77,21 @@ class BackgroundProgress<T extends BaseViewModel> extends ViewModelWidget<T> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             progressIndicatorWidget,
-            if (message.isNotNullOrEmpty) ...[
+            if (message.isNotNullAndNotEmpty) ...[
               verticalSpaceLight,
               Text(
                 message!,
-                style: context.styleTitleMedium?.copyWith(
-                  color: context.colors.onPrimaryContainer,
-                  shadows: [
-                    BoxShadow(
-                      color: context.colors.primaryContainer,
-                      spreadRadius: 5.0,
-                      blurRadius: 10.0,
+                style: messageStyle ??
+                    context.styleTitleMedium?.copyWith(
+                      color: context.colors.onPrimaryContainer,
+                      shadows: [
+                        BoxShadow(
+                          color: context.colors.primaryContainer,
+                          spreadRadius: 5.0,
+                          blurRadius: 10.0,
+                        ),
+                      ],
                     ),
-                  ],
-                ),
               ),
             ],
           ],
