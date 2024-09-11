@@ -1,4 +1,4 @@
-part of '../widgets.dart';
+part of 'ccl_table.dart';
 
 /// Represents a row in a CCLTable widget.
 ///

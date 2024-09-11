@@ -1,4 +1,10 @@
-part of '../widgets.dart';
+import 'dart:ui';
+
+import 'package:ccl_core/ccl_core.dart';
+import 'package:flutter/material.dart';
+import 'package:stacked/stacked.dart';
+
+import '../../ui.dart';
 
 /// A widget that displays a progress indicator overlay when the provided ViewModel is busy.
 ///
@@ -6,7 +12,9 @@ part of '../widgets.dart';
 ///
 /// * `child`: The widget to be displayed behind the progress indicator.
 /// * `message`: An optional message to display below the progress indicator.
-/// * `blurBackground`: Whether to blur the background while the progress indicator is shown.
+/// * `blurBackground`: Whether to blur the background while the progress indicator is shown. Defaults to `true`.
+/// * `progressIndicator`: An optional custom progress indicator widget. If not provided, a default `CircularProgressIndicator` is used.
+/// * `isChildVisibleWhileBusy`: Whether the `child` widget should remain visible while the progress indicator is shown. Defaults to `true`.
 ///
 /// The widget uses a stack to position the progress indicator on top of the child widget.
 /// When the ViewModel is busy, the progress indicator is animated with an opacity of 1.0.
@@ -20,10 +28,14 @@ part of '../widgets.dart';
 ///
 /// This widget is useful for displaying a progress indicator while data is being loaded or an operation is in progress.
 ///
-/// See also:
+/// **Example:**
 ///
-/// * `CircularProgressIndicator`: The progress indicator used by this widget.
-/// * `ImageFilter`: The filter used to blur the background when `blurBackground` is true.
+/// BackgroundProgress<YourViewModel>(
+/// viewModelBuilder: () => YourViewModel(),
+/// child: YourChildWidget(),
+/// message: 'Loading data...',
+/// blurBackground: true,
+/// )
 class BackgroundProgress<T extends BaseViewModel> extends ViewModelWidget<T> {
   /// The widget to be displayed behind the progress indicator.
   final Widget child;
@@ -31,40 +43,56 @@ class BackgroundProgress<T extends BaseViewModel> extends ViewModelWidget<T> {
   /// An optional message to display below the progress indicator.
   final String? message;
 
+  final TextStyle? messageStyle;
+
   /// Whether to blur the background while the progress indicator is shown.
   final bool blurBackground;
+
+  /// An optional progress indicator to display while the ViewModel is busy.
+  final Widget? progressIndicator;
+
+  /// Whether to show the child widget while the ViewModel is busy.
+  final bool isChildVisibleWhileBusy;
 
   const BackgroundProgress(
       {super.key,
       required this.child,
       this.blurBackground = true,
-      this.message});
+      this.message,
+      this.messageStyle,
+      this.progressIndicator,
+      this.isChildVisibleWhileBusy = true});
 
   @override
   Widget build(BuildContext context, T viewModel) {
+    final progressIndicatorWidget =
+        progressIndicator ?? const CircularProgressIndicator(strokeWidth: 3.0);
+
     final progressWidget = Container(
       decoration: BoxDecoration(
-          color: context.colors.primaryContainer.withOpacity(0.5)),
+        color: context.colors.primaryContainer.withOpacity(0.5),
+      ),
       child: Center(
         child: Column(
           mainAxisSize: MainAxisSize.min,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            const CircularProgressIndicator(strokeWidth: 3.0),
-            if (message.isNotNullOrEmpty) ...[
+            progressIndicatorWidget,
+            if (message.isNotNullAndNotEmpty) ...[
               verticalSpaceLight,
               Text(
                 message!,
-                style: context.styleTitleMedium?.copyWith(
-                  color: context.colors.onPrimaryContainer,
-                  shadows: [
-                    BoxShadow(
-                      color: context.colors.primaryContainer,
-                      spreadRadius: 5.0,
-                      blurRadius: 10.0,
+                style: messageStyle ??
+                    context.styleTitleMedium?.copyWith(
+                      color: context.colors.onPrimaryContainer,
+                      shadows: [
+                        BoxShadow(
+                          color: context.colors.primaryContainer,
+                          spreadRadius: 5.0,
+                          blurRadius: 10.0,
+                        ),
+                      ],
                     ),
-                  ],
-                ),
               ),
             ],
           ],
@@ -76,7 +104,7 @@ class BackgroundProgress<T extends BaseViewModel> extends ViewModelWidget<T> {
       duration: const Duration(milliseconds: 2000),
       child: Stack(
         children: [
-          child,
+          if (!viewModel.isBusy || isChildVisibleWhileBusy) child,
           if (viewModel.isBusy)
             Positioned.fill(
               child: AnimatedOpacity(

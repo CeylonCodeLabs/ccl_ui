@@ -70,4 +70,16 @@ extension BuildContextExt on BuildContext {
     final brightness = Theme.of(this).brightness;
     return brightness == Brightness.dark;
   }
+
+  Size get ss => MediaQuery.sizeOf(this);
+
+  Size get screenSize => ss;
+
+  double get sh => ss.height;
+
+  double get screenHeight => sh;
+
+  double get sw => ss.width;
+
+  double get screenWidth => sw;
 }
