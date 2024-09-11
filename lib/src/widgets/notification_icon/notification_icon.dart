@@ -1,9 +1,11 @@
 
 import 'package:ccl_services/ccl_services.dart';
-import 'package:ccl_ui/common/common.dart';
+
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked/stacked_annotations.dart';
+
+import '../../ui.dart';
 
 part 'notification_icon_model.dart';
 

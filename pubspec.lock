@@ -76,16 +76,18 @@ packages:
   ccl_core:
     dependency: "direct main"
     description:
-      path: "../ccl_core"
-      relative: true
-    source: path
+      name: ccl_core
+      sha256: c92f5d34a44757e5367079d8905ab69a390e0e13da013a3deff76523c3bb8973
+      url: "https://pub.dev"
+    source: hosted
     version: "0.2.0"
   ccl_services:
     dependency: "direct main"
     description:
-      path: "../ccl_services"
-      relative: true
-    source: path
+      name: ccl_services
+      sha256: a37ef16ba088b34e649e6ad6e0e0fb256ae7a0b92abd6289b822946367af51de
+      url: "https://pub.dev"
+    source: hosted
     version: "0.5.0"
   characters:
     dependency: transitive

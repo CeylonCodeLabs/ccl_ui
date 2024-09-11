@@ -1,9 +1,10 @@
 import 'dart:ui';
 
 import 'package:ccl_core/ccl_core.dart';
-import 'package:ccl_ui/common/common.dart';
 import 'package:flutter/material.dart';
 import 'package:stacked/stacked.dart';
+
+import '../../ui.dart';
 
 /// A widget that displays a progress indicator overlay when the provided ViewModel is busy.
 ///
