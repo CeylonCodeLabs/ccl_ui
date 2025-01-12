@@ -51,6 +51,7 @@ export 'common/common.dart'
         FontWeightExtension;
 export 'widgets/ccl_localization/ccl_localization.dart';
 export 'widgets/ccl_table/ccl_table.dart';
+export 'widgets/ccl_ui_settings/ccl_ui_configurator.dart';
 export 'widgets/notification_icon/notification_icon.dart';
 export 'widgets/progress/background_progress.dart';
 export 'widgets/widgets.dart'

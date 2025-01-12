@@ -1,4 +1,20 @@
 
+<a name="v0.7.0"></a>
+## [v0.7.0](https://github.com/CeylonCodeLabs/ccl_packages/compare/v0.6.0...v0.7.0) (2025-01-12)
+
+### Chore
+
+* **Release:** v0.7.0
+
+### Docs
+
+* **Release:** Updates
+
+### Feat
+
+* **Background Progress:** Introduced new ui settings configuration for whole ccl ui system starting with background progress.
+
+
 <a name="v0.6.0"></a>
 ## [v0.6.0](https://github.com/CeylonCodeLabs/ccl_packages/compare/v0.5.0...v0.6.0) (2024-09-11)
 
