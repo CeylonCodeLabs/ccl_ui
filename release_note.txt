@@ -1,3 +1,2 @@
-- chore(Release): v0.7.0 (Pasan Eramusugoda)
-- feat(Background Progress): Introduced new ui settings configuration for whole ccl ui system starting with background progress. (Pasan Eramusugoda)
-- docs(Release): Updates (Pasan Eramusugoda)
+- chore(Release): v0.7.1 (Pasan Eramusugoda)
+- refactor(UI Settings): Backward compatibility update (Pasan Eramusugoda)
