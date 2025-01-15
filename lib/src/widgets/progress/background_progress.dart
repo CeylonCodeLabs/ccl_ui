@@ -108,7 +108,7 @@ class BackgroundProgress<T extends BaseViewModel> extends ViewModelWidget<T> {
           isChildVisibleWhileBusy: isChildVisibleWhileBusy ??
               defaultSettings.isChildVisibleWhileBusy,
           backgroundColor: defaultSettings.backgroundColor ??
-              context.colors.primaryContainer.withValues(alpha: 0.5),
+              context.colors.primaryContainer.withOpacity(0.5),
         );
 
     final progressIndicatorWidget = progressIndicator ??

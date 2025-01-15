@@ -33,7 +33,7 @@ class BackgroundProgressSettings {
           ),
         ],
       ),
-      backgroundColor: context.colors.primaryContainer.withValues(alpha: 0.5),
+      backgroundColor: context.colors.primaryContainer.withOpacity(0.5),
       progressIndicator: const CircularProgressIndicator(strokeWidth: 3.0),
     );
   }
