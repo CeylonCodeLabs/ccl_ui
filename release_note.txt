@@ -1,2 +1,2 @@
-- chore(Release): v0.7.1 (Pasan Eramusugoda)
-- refactor(UI Settings): Backward compatibility update (Pasan Eramusugoda)
+- feat(Helpers): Add horizontal spacer with customer width property (Pasan Eramusugoda)
+- docs(Release): Updates (Pasan Eramusugoda)
