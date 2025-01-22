@@ -34,9 +34,15 @@ class FutureWidget<T> extends StatelessWidget {
   /// A widget to be displayed while the future is loading (optional).
   final Widget Function()? waiting;
 
+  /// A builder function that builds the widget to be displayed when an error occurs (optional).
+  final Widget Function(Object? error)? error;
+
   /// A builder function that builds the widget to be displayed once
   /// the future has completed and data is available (required).
   final Widget Function(T? data) done;
+
+  /// Whether to show the error message (default: true).
+  final bool showError;
 
   /// The style of the text displayed when an error occurs (optional).
   final TextStyle? errorTextStyle;
@@ -46,7 +52,9 @@ class FutureWidget<T> extends StatelessWidget {
     super.key,
     required this.future,
     this.waiting,
+    this.error,
     required this.done,
+    this.showError = true,
     this.errorTextStyle,
   });
 
@@ -56,14 +64,18 @@ class FutureWidget<T> extends StatelessWidget {
       future: future,
       builder: (BuildContext context, AsyncSnapshot<T> snapshot) {
         if (snapshot.hasError) {
-          return Padding(
-            padding: const EdgeInsets.all(sizeDefault),
-            child: Text(
-              '${snapshot.error}',
-              textAlign: TextAlign.center,
-              style: errorTextStyle,
-            ),
-          );
+          return !showError
+              ? const SizedBox.shrink()
+              : error != null
+                  ? error!(snapshot.error)
+                  : Padding(
+                      padding: const EdgeInsets.all(sizeDefault),
+                      child: Text(
+                        '${snapshot.error}',
+                        textAlign: TextAlign.center,
+                        style: errorTextStyle,
+                      ),
+                    );
         }
         switch (snapshot.connectionState) {
           case ConnectionState.none:
@@ -79,4 +91,3 @@ class FutureWidget<T> extends StatelessWidget {
     );
   }
 }
-
