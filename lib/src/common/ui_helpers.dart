@@ -81,6 +81,9 @@ const Widget spacedDivider = Column(
 /// Creates a vertical space widget with the specified [height].
 Widget verticalSpace(double height) => SizedBox(height: height);
 
+/// Creates a horizontal space widget with the specified [width].
+Widget horizontalSpace(double width) => SizedBox(width: width);
+
 /// Gets the screen width of the current context.
 @Deprecated('Use context.screanWidth instead')
 double screenWidth(BuildContext context) => sw(context);
