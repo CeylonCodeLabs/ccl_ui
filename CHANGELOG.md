@@ -1,4 +1,20 @@
 
+<a name="v0.7.4"></a>
+## [v0.7.4](https://github.com/CeylonCodeLabs/ccl_packages/compare/v0.7.3...v0.7.4) (2025-01-22)
+
+### Chore
+
+* **Release:** v0.7.4
+
+### Docs
+
+* **Release:** Updates
+
+### Refactor
+
+* **Future Widget:** Add error and show error properties
+
+
 <a name="v0.7.3"></a>
 ## [v0.7.3](https://github.com/CeylonCodeLabs/ccl_packages/compare/v0.7.2...v0.7.3) (2025-01-22)
 
