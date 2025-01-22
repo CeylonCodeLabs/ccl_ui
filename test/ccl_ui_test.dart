@@ -101,6 +101,20 @@ void main() {
     });
   });
 
+  testWidgets('Horizontal space widget renders correctly with specified width',
+      (WidgetTester tester) async {
+    const double customWidth = 50.0;
+
+    await tester.pumpWidget(MaterialApp(
+      home: Scaffold(
+        body: horizontalSpace(customWidth),
+      ),
+    ));
+
+    expect(find.byType(SizedBox).evaluate().first.size?.width,
+        equals(customWidth));
+  });
+
   group('Responsive Sizing Tests', () {
     testWidgets('Responsive font sizes render correctly',
         (WidgetTester tester) async {

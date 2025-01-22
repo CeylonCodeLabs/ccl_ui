@@ -25,6 +25,7 @@ export 'common/common.dart'
         verticalSpaceMassive,
         spacedDivider,
         verticalSpace,
+        horizontalSpace,
         screenWidth,
         sw,
         screenHeight,
