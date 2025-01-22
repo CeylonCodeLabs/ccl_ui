@@ -1,6 +1,6 @@
 name: ccl_ui
 description: "CeylonCodeLabs UI Extensions"
-version: 0.7.4
+version: 0.7.5
 homepage: https://github.com/CeylonCodeLabs/ccl_packages
 
 environment:

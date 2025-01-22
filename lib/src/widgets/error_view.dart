@@ -44,6 +44,9 @@ class ErrorView extends StatelessWidget {
   /// The text displayed on the button (default: 'Go Back').
   final String buttonText;
 
+  /// The button to execute custom action
+  final Widget? errorButton;
+
   /// The function to be called when the button is tapped (optional).
   final VoidCallback? onTap;
 
@@ -54,6 +57,7 @@ class ErrorView extends StatelessWidget {
     required this.message,
     this.messageStyle,
     this.buttonText = 'Go Back',
+    this.errorButton,
     this.onTap,
   });
 
@@ -79,14 +83,17 @@ class ErrorView extends StatelessWidget {
             textAlign: TextAlign.center,
             style: messageStyle ?? context.styleTitleMedium,
           ),
-          if (onTap != null)
+          if (errorButton != null) ...[
+            errorButton!,
+          ] else if (onTap != null) ...[
             Padding(
               padding: const EdgeInsets.only(top: sizeLight),
-              child: ElevatedButton(
+              child: TextButton(
                 onPressed: onTap,
                 child: Text(buttonText),
               ),
             ),
+          ],
         ],
       ),
     );
