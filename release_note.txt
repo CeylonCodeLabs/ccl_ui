@@ -1,2 +1,2 @@
-- feat(Helpers): Add horizontal spacer with customer width property (Pasan Eramusugoda)
+- feat(Helpers): Visibility and tests added for horizontal spacer with customer width property (Pasan Eramusugoda)
 - docs(Release): Updates (Pasan Eramusugoda)
