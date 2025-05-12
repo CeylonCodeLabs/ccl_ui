@@ -100,15 +100,11 @@ class BackgroundProgress<T extends BaseViewModel> extends ViewModelWidget<T> {
             BackgroundProgressSettings.defaultSettings(context);
 
     final effectiveSettings = settings ??
-        BackgroundProgressSettings(
-          messageStyle: messageStyle ?? defaultSettings.messageStyle,
-          blurBackground: blurBackground ?? defaultSettings.blurBackground,
-          progressIndicator:
-              progressIndicator ?? defaultSettings.progressIndicator,
-          isChildVisibleWhileBusy: isChildVisibleWhileBusy ??
-              defaultSettings.isChildVisibleWhileBusy,
-          backgroundColor: defaultSettings.backgroundColor ??
-              context.colors.primaryContainer.withOpacity(0.5),
+        defaultSettings.copyWith(
+          messageStyle: messageStyle,
+          blurBackground: blurBackground,
+          progressIndicator: progressIndicator,
+          isChildVisibleWhileBusy: isChildVisibleWhileBusy,
         );
 
     final progressIndicatorWidget = progressIndicator ??
@@ -118,6 +114,7 @@ class BackgroundProgress<T extends BaseViewModel> extends ViewModelWidget<T> {
     final progressWidget = Container(
       decoration: BoxDecoration(
         color: effectiveSettings.backgroundColor,
+        gradient: effectiveSettings.backgroundGradient,
       ),
       child: Center(
         child: Column(
@@ -137,6 +134,9 @@ class BackgroundProgress<T extends BaseViewModel> extends ViewModelWidget<T> {
       ),
     );
 
+    final backgroundBlurFilter = effectiveSettings.backgroundBlurFilter ??
+        ImageFilter.blur(sigmaX: 5, sigmaY: 5);
+
     return AnimatedContainer(
       duration: const Duration(milliseconds: 2000),
       child: Stack(
@@ -152,7 +152,7 @@ class BackgroundProgress<T extends BaseViewModel> extends ViewModelWidget<T> {
                 duration: const Duration(milliseconds: 2000),
                 child: effectiveSettings.blurBackground
                     ? BackdropFilter(
-                        filter: ImageFilter.blur(sigmaX: 5, sigmaY: 5),
+                        filter: backgroundBlurFilter,
                         child: progressWidget,
                       )
                     : progressWidget,
