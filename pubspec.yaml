@@ -1,6 +1,6 @@
 name: ccl_ui
 description: "CeylonCodeLabs UI Extensions"
-version: 0.7.5
+version: 0.7.6
 homepage: https://github.com/CeylonCodeLabs/ccl_packages
 
 environment:
@@ -29,8 +29,8 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  mockito: ^5.4.4
-  flutter_lints: ^4.0.0
+  mockito: ^5.4.6
+  flutter_lints: ^5.0.0
 
 scripts:
   gen_docs: git-chglog -o CHANGELOG.md && git log --pretty="- %s (%an)" $(git describe --tags --abbrev=0 $(git rev-list --tags --skip=1 --max-count=1))..HEAD > release_note.txt
