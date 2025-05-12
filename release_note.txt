@@ -1,2 +1,3 @@
-- refactor(Error Widget): Add error button property (Pasan Eramusugoda)
+- chore(Release): v0.7.6 (Pasan Eramusugoda)
+- refactor(Background Progress): Update BackgroundProgressSettings properties (Pasan Eramusugoda)
 - docs(Release): Updates (Pasan Eramusugoda)

@@ -1,4 +1,20 @@
 
+<a name="v0.7.6"></a>
+## [v0.7.6](https://github.com/CeylonCodeLabs/ccl_packages/compare/v0.7.5...v0.7.6) (2025-05-12)
+
+### Chore
+
+* **Release:** v0.7.6
+
+### Docs
+
+* **Release:** Updates
+
+### Refactor
+
+* **Background Progress:** Update BackgroundProgressSettings properties
+
+
 <a name="v0.7.5"></a>
 ## [v0.7.5](https://github.com/CeylonCodeLabs/ccl_packages/compare/v0.7.4...v0.7.5) (2025-01-22)
 
