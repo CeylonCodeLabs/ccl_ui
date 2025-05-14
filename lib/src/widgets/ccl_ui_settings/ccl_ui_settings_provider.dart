@@ -79,6 +79,34 @@ class _CCLUiSettingsProvider extends InheritedWidget {
     return settings;
   }
 
+  /// Retrieves the [GeneralSettings] from the nearest
+  /// [_CCLUiSettingsProvider] ancestor in the widget tree.
+  ///
+  /// Returns `null` if no [_CCLUiSettingsProvider] is found or if
+  /// `generalSettings` is null on the settings object.
+  static GeneralSettings? maybeOfGeneral(BuildContext context) {
+    final provider =
+        context.dependOnInheritedWidgetOfExactType<_CCLUiSettingsProvider>();
+    return provider?.settings?.generalSettings;
+  }
+
+  /// Retrieves the [GeneralSettings] from the nearest
+  /// [_CCLUiSettingsProvider] ancestor in the widget tree.
+  ///
+  /// Throws a [FlutterError] if no [_CCLUiSettingsProvider] is found or if
+  /// `generalSettings` is null on the settings object.
+  static GeneralSettings ofGeneral(BuildContext context) {
+    final settings = maybeOfGeneral(context);
+    if (settings == null) {
+      throw FlutterError(
+        'CCLUiConfigurator.ofGeneral() called with a context that does not contain a CCLUiConfigurator or the settings do not contain generalSettings.\n'
+        'No CCLUiConfigurator ancestor could be found starting from the context that was passed to CCLUiConfigurator.ofGeneral().\n'
+        'The context used was: $context',
+      );
+    }
+    return settings;
+  }
+
   /// Retrieves the [BackgroundProgressSettings] from the nearest
   /// [_CCLUiSettingsProvider] ancestor in the widget tree.
   ///

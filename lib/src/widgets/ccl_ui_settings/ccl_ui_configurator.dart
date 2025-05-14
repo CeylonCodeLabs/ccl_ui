@@ -1,6 +1,7 @@
 import 'dart:ui';
 
 import 'package:ccl_ui/ccl_ui.dart';
+import 'package:ccl_ui/src/widgets/ccl_ui_settings/settings/general_settings.dart';
 import 'package:flutter/material.dart';
 
 part 'ccl_ui_settings_provider.dart';
@@ -81,6 +82,22 @@ class CCLUiConfigurator extends StatelessWidget {
   /// Throws a [FlutterError] if no `CCLUiConfigurator` is found.
   static CCLUiSettings of(BuildContext context) =>
       _CCLUiSettingsProvider.of(context);
+
+  /// Retrieves the [GeneralSettings] from the nearest ancestor
+  /// `CCLUiConfigurator`.
+  ///
+  /// Returns `null` if no `CCLUiConfigurator` is found or if the settings
+  /// do not contain `generalSettings`.
+  static GeneralSettings? maybeOfGeneral(BuildContext context) =>
+      _CCLUiSettingsProvider.maybeOfGeneral(context);
+
+  /// Retrieves the [GeneralSettings] from the nearest ancestor
+  /// `CCLUiConfigurator`.
+  ///
+  /// Throws a [FlutterError] if no `CCLUiConfigurator` is found or if the
+  /// settings do not contain `generalSettings`.
+  static GeneralSettings ofGeneral(BuildContext context) =>
+      _CCLUiSettingsProvider.ofGeneral(context);
 
   /// Retrieves the [BackgroundProgressSettings] from the nearest ancestor
   /// `CCLUiConfigurator`.

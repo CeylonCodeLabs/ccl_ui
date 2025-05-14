@@ -60,6 +60,12 @@ class FutureWidget<T> extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final defaultSettings = CCLUiConfigurator.maybeOfGeneral(context) ??
+        GeneralSettings.defaultSettings(context);
+
+    final progressIndicatorWidget = defaultSettings.progressIndicator ??
+        const CircularProgressIndicator(strokeWidth: 3.0);
+
     return FutureBuilder<T>(
       future: future,
       builder: (BuildContext context, AsyncSnapshot<T> snapshot) {
@@ -81,7 +87,7 @@ class FutureWidget<T> extends StatelessWidget {
           case ConnectionState.none:
           case ConnectionState.waiting:
             return waiting == null
-                ? const Center(child: CircularProgressIndicator())
+                ? Center(child: progressIndicatorWidget)
                 : waiting!();
           case ConnectionState.active:
           case ConnectionState.done:

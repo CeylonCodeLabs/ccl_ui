@@ -63,6 +63,9 @@ class ErrorView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final defaultSettings = CCLUiConfigurator.maybeOfGeneral(context) ??
+        GeneralSettings.defaultSettings(context);
+
     return Center(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
@@ -75,13 +78,17 @@ class ErrorView extends StatelessWidget {
               child: Text(
                 title!,
                 textAlign: TextAlign.center,
-                style: titleStyle ?? context.styleTitleLarge,
+                style: titleStyle ??
+                    defaultSettings.errorTitleStyle ??
+                    context.styleTitleLarge,
               ),
             ),
           Text(
             message,
             textAlign: TextAlign.center,
-            style: messageStyle ?? context.styleTitleMedium,
+            style: messageStyle ??
+                defaultSettings.errorMessageStyle ??
+                context.styleTitleMedium,
           ),
           if (errorButton != null) ...[
             errorButton!,

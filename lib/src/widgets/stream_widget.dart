@@ -65,6 +65,12 @@ class StreamWidget<T> extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final defaultSettings = CCLUiConfigurator.maybeOfGeneral(context) ??
+        GeneralSettings.defaultSettings(context);
+
+    final progressIndicatorWidget = defaultSettings.progressIndicator ??
+        const CircularProgressIndicator(strokeWidth: 3.0);
+
     return StreamBuilder<T>(
       stream: stream,
       initialData: initialData,
@@ -79,7 +85,8 @@ class StreamWidget<T> extends StatelessWidget {
                       child: Text(
                         '${snapshot.error}',
                         textAlign: TextAlign.center,
-                        style: errorTextStyle,
+                        style: errorTextStyle ??
+                            context.styleBodyMedium.wcError(context),
                       ),
                     );
         }
@@ -87,7 +94,7 @@ class StreamWidget<T> extends StatelessWidget {
           case ConnectionState.none:
           case ConnectionState.waiting:
             return waiting == null
-                ? const Center(child: CircularProgressIndicator())
+                ? Center(child: progressIndicatorWidget)
                 : waiting!();
           case ConnectionState.active:
           case ConnectionState.done:
