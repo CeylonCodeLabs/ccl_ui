@@ -1,14 +1,13 @@
 import 'dart:ui';
 
 import 'package:ccl_ui/ccl_ui.dart';
-import 'package:ccl_ui/src/widgets/ccl_ui_settings/settings/general_settings.dart';
 import 'package:flutter/material.dart';
 
 part 'ccl_ui_settings_provider.dart';
-
 part 'settings/background_progress_settings.dart';
-
 part 'settings/ccl_ui_settings.dart';
+part 'settings/empty_widget_settings.dart';
+part 'settings/general_settings.dart';
 
 /// Configures and provides access to [CCLUiSettings] for its descendants.
 ///
@@ -116,4 +115,35 @@ class CCLUiConfigurator extends StatelessWidget {
   static BackgroundProgressSettings ofBackgroundProgress(
           BuildContext context) =>
       _CCLUiSettingsProvider.ofBackgroundProgress(context);
+
+  /// Retrieves the [EmptyWidgetSettings] from the nearest
+  /// [_CCLUiSettingsProvider] ancestor in the widget tree.
+  ///
+  /// Returns `null` if no [_CCLUiSettingsProvider] is found or if
+  /// `emptyWidgetSettings` is null on the settings object.
+  static EmptyWidgetSettings? maybeOfEmptyWidget(BuildContext context) {
+    return _CCLUiSettingsProvider.maybeOfGeneral(context)?.emptyWidgetSettings;
+  }
+
+  /// Retrieves the [EmptyWidgetSettings] from the nearest
+  /// [_CCLUiSettingsProvider] ancestor in the widget tree.
+  ///
+  /// Throws a [FlutterError] if no [_CCLUiSettingsProvider] is found or if
+  /// `emptyWidgetSettings` is null on the settings object.
+  static EmptyWidgetSettings ofEmptyWidget(BuildContext context) {
+    final settings = maybeOfEmptyWidget(context);
+    if (settings == null) {
+      throw FlutterError(
+        'CCLUiConfigurator.ofEmptyWidget() called with a context that does not contain a CCLUiConfigurator or the settings do not contain emptyWidgetSettings.\n'
+        'No CCLUiConfigurator ancestor could be found starting from the context that was passed to CCLUiConfigurator.ofEmptyWidget().\n'
+        'The context used was: $context',
+      );
+    }
+    return settings;
+  }
+
+  @override
+  bool updateShouldNotify(_CCLUiSettingsProvider oldWidget) {
+    return settings != oldWidget.settings;
+  }
 }

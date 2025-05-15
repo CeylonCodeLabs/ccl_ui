@@ -135,4 +135,20 @@ class _CCLUiSettingsProvider extends InheritedWidget {
     }
     return settings;
   }
+
+  /// Retrieves the [EmptyWidgetSettings] from the nearest ancestor
+  /// `CCLUiConfigurator`.
+  ///
+  /// Returns `null` if no `CCLUiConfigurator` is found or if the settings
+  /// do not contain `emptyWidgetSettings`.
+  static EmptyWidgetSettings? maybeOfEmptyWidget(BuildContext context) =>
+      _CCLUiSettingsProvider.maybeOfEmptyWidget(context);
+
+  /// Retrieves the [EmptyWidgetSettings] from the nearest ancestor
+  /// `CCLUiConfigurator`.
+  ///
+  /// Throws a [FlutterError] if no `CCLUiConfigurator` is found or if the
+  /// settings do not contain `emptyWidgetSettings`.
+  static EmptyWidgetSettings ofEmptyWidget(BuildContext context) =>
+      _CCLUiSettingsProvider.ofEmptyWidget(context);
 }

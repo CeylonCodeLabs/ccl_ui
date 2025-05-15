@@ -1,5 +1,4 @@
-import 'package:ccl_ui/ccl_ui.dart';
-import 'package:flutter/material.dart';
+part of '../ccl_ui_configurator.dart';
 
 /// Represents general UI settings.
 ///
@@ -22,11 +21,18 @@ class GeneralSettings {
   /// This style is used for the body text of error messages or dialogs.
   final TextStyle? errorMessageStyle;
 
+  /// Settings for the empty state widget.
+  ///
+  /// These settings control the appearance and content of the widget displayed
+  /// when there is no data to show.
+  final EmptyWidgetSettings? emptyWidgetSettings;
+
   /// Creates a new instance of [GeneralSettings].
   ///
   /// [progressIndicator] is an optional widget to display as a progress indicator.
   /// [errorTitleStyle] is an optional text style for error titles.
   /// [errorMessageStyle] is an optional text style for error messages.
+  /// [emptyWidgetSettings] is optional settings for the empty state widget.
   ///
   /// If any of these parameters are not provided, the default settings will be
   /// used when accessing them through the [defaultSettings] factory constructor.
@@ -34,6 +40,7 @@ class GeneralSettings {
     this.progressIndicator,
     this.errorTitleStyle,
     this.errorMessageStyle,
+    this.emptyWidgetSettings,
   });
 
   /// Creates a copy of this [GeneralSettings] instance with optional overrides.
@@ -47,6 +54,7 @@ class GeneralSettings {
   /// *   [progressIndicator]: An optional new progress indicator to use.
   /// *   [errorTitleStyle]: An optional new text style for error titles.
   /// *   [errorMessageStyle]: An optional new text style for error messages.
+  /// *   [emptyWidgetSettings]: Optional new settings for the empty state widget.
   ///
   /// **Returns:**
   ///
@@ -55,11 +63,13 @@ class GeneralSettings {
     Widget? progressIndicator,
     TextStyle? errorTitleStyle,
     TextStyle? errorMessageStyle,
+    EmptyWidgetSettings? emptyWidgetSettings,
   }) {
     return GeneralSettings(
       progressIndicator: progressIndicator ?? this.progressIndicator,
       errorTitleStyle: errorTitleStyle ?? this.errorTitleStyle,
       errorMessageStyle: errorMessageStyle ?? this.errorMessageStyle,
+      emptyWidgetSettings: emptyWidgetSettings ?? this.emptyWidgetSettings,
     );
   }
 
@@ -78,6 +88,9 @@ class GeneralSettings {
   /// The default [errorMessageStyle] is derived from the context's
   /// `styleBodyMedium` and colored with the context's error color (`wcError`).
   ///
+  /// The default [emptyWidgetSettings] are created using
+  /// [EmptyWidgetSettings.defaultSettings].
+  ///
   /// The [context] is required to provide context-dependent default settings,
   /// such as theme data and text styles.
   static GeneralSettings defaultSettings(BuildContext context) {
@@ -85,6 +98,7 @@ class GeneralSettings {
       progressIndicator: const CircularProgressIndicator(strokeWidth: 3.0),
       errorTitleStyle: context.styleTitleLarge?.w700,
       errorMessageStyle: context.styleBodyMedium,
+      emptyWidgetSettings: EmptyWidgetSettings.defaultSettings(context),
     );
   }
 }

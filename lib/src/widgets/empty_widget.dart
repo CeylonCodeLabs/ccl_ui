@@ -1,34 +1,53 @@
 part of 'widgets.dart';
 
 class EmptyWidget extends StatelessWidget {
+  @Deprecated('Use EmptyWidgetSettings settings')
   final Widget? image;
   final Widget? button;
-  final double? size;
-  final String textMessage;
-  final VoidCallback? onPressed;
+  @Deprecated('Use EmptyWidgetSettings settings')
+  final String? textMessage;
+  final EmptyWidgetSettings? settings;
 
   const EmptyWidget({
     super.key,
     this.image,
     this.button,
-    this.size,
-    this.textMessage = 'Data not found',
-    this.onPressed,
+    this.textMessage,
+    this.settings,
   });
 
   @override
   Widget build(BuildContext context) {
+    final defaultSettings = CCLUiConfigurator.maybeOfEmptyWidget(context) ??
+        EmptyWidgetSettings.defaultSettings(context);
+
+    final effectiveSettings = settings ?? defaultSettings;
+
+    final emptyGraphic = image ?? effectiveSettings.emptyGraphic;
+    final title = effectiveSettings.title;
+    final message = textMessage ?? effectiveSettings.message;
+
     return Column(
+      mainAxisSize: MainAxisSize.min,
+      crossAxisAlignment: CrossAxisAlignment.center,
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        if (image != null) ...[
-          image!,
+        if (emptyGraphic != null) ...[
+          emptyGraphic,
+          verticalSpaceDefault,
+        ],
+        if (title.isNotNullAndNotEmpty) ...[
+          Text(
+            title!,
+            textAlign: TextAlign.center,
+            style: effectiveSettings.titleStyle,
+          ),
           verticalSpaceLight,
         ],
         Text(
-          textMessage,
-          style: Theme.of(context).textTheme.bodyLarge,
+          message,
           textAlign: TextAlign.center,
+          style: effectiveSettings.messageStyle,
         ),
         if (button != null) ...[
           verticalSpaceMedium,
