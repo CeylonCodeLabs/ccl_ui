@@ -1,4 +1,20 @@
 
+<a name="v0.8.0"></a>
+## [v0.8.0](https://github.com/CeylonCodeLabs/ccl_packages/compare/v0.7.7...v0.8.0) (2025-05-15)
+
+### Chore
+
+* **Release:** v0.8.0
+
+### Docs
+
+* **Release:** Updates
+
+### Refactor
+
+* **Empty Widget Settings:** Add empty widget ui settings
+
+
 <a name="v0.7.7"></a>
 ## [v0.7.7](https://github.com/CeylonCodeLabs/ccl_packages/compare/v0.7.6...v0.7.7) (2025-05-14)
 
