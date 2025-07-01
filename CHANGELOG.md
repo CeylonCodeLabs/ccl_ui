@@ -1,4 +1,21 @@
 
+<a name="v0.9.0"></a>
+## [v0.9.0](https://github.com/CeylonCodeLabs/ccl_packages/compare/v0.8.0...v0.9.0) (2025-07-01)
+
+### Chore
+
+* **Release:** v0.9.0
+* **deps:** Update ccl_core and flutter_lints versions
+
+### Docs
+
+* **Release:** Updates
+
+### Feat
+
+* **BackgroundProgress:** Allow passing busyObject
+
+
 <a name="v0.8.0"></a>
 ## [v0.8.0](https://github.com/CeylonCodeLabs/ccl_packages/compare/v0.7.7...v0.8.0) (2025-05-15)
 
