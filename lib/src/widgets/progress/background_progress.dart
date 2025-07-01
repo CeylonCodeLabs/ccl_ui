@@ -10,7 +10,11 @@ import '../../ui.dart';
 ///
 /// This widget provides a convenient way to display a progress indicator while an asynchronous operation is in progress.
 /// It overlays the progress indicator on top of the provided [child] widget.
-/// The visibility of the progress indicator is controlled by the `isBusy` state of the provided ViewModel.
+///
+/// The visibility of the progress indicator is controlled by the `isBusy`
+/// state of the provided ViewModel. Optionally, a [busyObject] can be
+/// provided to listen to a specific busy state within the ViewModel,
+/// allowing for more granular control over when the progress indicator is shown.
 ///
 /// **Configuration:**
 ///
@@ -67,6 +71,11 @@ class BackgroundProgress<T extends BaseViewModel> extends ViewModelWidget<T> {
   /// If provided, this will override `settings.messageStyle`.
   final TextStyle? messageStyle;
 
+  /// An optional object to listen to for busy state.
+  /// If provided, the progress indicator will only be shown when the ViewModel is busy with this specific object.
+  /// If null, the progress indicator will be shown whenever the ViewModel's `isBusy` property is true.
+  final Object? busyObject;
+
   /// **Deprecated:** Whether to blur the background while the progress indicator is shown.
   /// Use `settings.blurBackground` instead.
   @Deprecated('Use settings.blurBackground instead.')
@@ -91,6 +100,7 @@ class BackgroundProgress<T extends BaseViewModel> extends ViewModelWidget<T> {
     this.blurBackground,
     this.progressIndicator,
     this.isChildVisibleWhileBusy,
+    this.busyObject,
   });
 
   @override
@@ -137,18 +147,20 @@ class BackgroundProgress<T extends BaseViewModel> extends ViewModelWidget<T> {
     final backgroundBlurFilter = effectiveSettings.backgroundBlurFilter ??
         ImageFilter.blur(sigmaX: 5, sigmaY: 5);
 
+    final isBusy = busyObject == null ? viewModel.isBusy : viewModel.busy(busyObject);
+
     return AnimatedContainer(
       duration: const Duration(milliseconds: 2000),
       child: Stack(
         children: [
-          if (!viewModel.isBusy ||
+          if (!isBusy ||
               effectiveSettings.isChildVisibleWhileBusy) ...[
             child,
           ],
-          if (viewModel.isBusy) ...[
+          if (isBusy) ...[
             Positioned.fill(
               child: AnimatedOpacity(
-                opacity: viewModel.isBusy ? 1 : 0,
+                opacity: isBusy ? 1 : 0,
                 duration: const Duration(milliseconds: 2000),
                 child: effectiveSettings.blurBackground
                     ? BackdropFilter(
