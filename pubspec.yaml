@@ -10,7 +10,7 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  ccl_core: '>=0.2.0'
+  ccl_core: '>=0.2.0 <1.0.0'
   ccl_services: '>=0.4.1 <1.0.0'
   responsive_builder: '>=0.7.0 <1.0.0'
   stacked: '>=3.4.2 <4.0.0'
@@ -30,7 +30,7 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
   mockito: ^5.4.6
-  flutter_lints: ^5.0.0
+  flutter_lints: ^6.0.0
 
 scripts:
   gen_docs: git-chglog -o CHANGELOG.md && git log --pretty="- %s (%an)" $(git describe --tags --abbrev=0 $(git rev-list --tags --skip=1 --max-count=1))..HEAD > release_note.txt
