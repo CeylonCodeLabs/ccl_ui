@@ -1,4 +1,20 @@
 
+<a name="v0.9.1"></a>
+## [v0.9.1](https://github.com/CeylonCodeLabs/ccl_packages/compare/v0.9.0...v0.9.1) (2025-07-22)
+
+### Build
+
+* **Deps:** Update ccl_core dependency to version 0.6.5
+
+### Chore
+
+* **Release:** v0.9.1
+
+### Docs
+
+* **Release:** Updates
+
+
 <a name="v0.9.0"></a>
 ## [v0.9.0](https://github.com/CeylonCodeLabs/ccl_packages/compare/v0.8.0...v0.9.0) (2025-07-01)
 
