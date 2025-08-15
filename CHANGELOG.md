@@ -1,4 +1,20 @@
 
+<a name="v0.10.0"></a>
+## [v0.10.0](https://github.com/CeylonCodeLabs/ccl_packages/compare/v0.9.1...v0.10.0) (2025-08-15)
+
+### Chore
+
+* **Release:** v0.10.0
+
+### Docs
+
+* **Release:** Updates
+
+### Feat
+
+* **BackgroundProgress:** Add direct busy state control
+
+
 <a name="v0.9.1"></a>
 ## [v0.9.1](https://github.com/CeylonCodeLabs/ccl_packages/compare/v0.9.0...v0.9.1) (2025-07-22)
 
