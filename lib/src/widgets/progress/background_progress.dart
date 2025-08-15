@@ -11,10 +11,11 @@ import '../../ui.dart';
 /// This widget provides a convenient way to display a progress indicator while an asynchronous operation is in progress.
 /// It overlays the progress indicator on top of the provided [child] widget.
 ///
-/// The visibility of the progress indicator is controlled by the `isBusy`
-/// state of the provided ViewModel. Optionally, a [busyObject] can be
-/// provided to listen to a specific busy state within the ViewModel,
-/// allowing for more granular control over when the progress indicator is shown.
+/// The visibility of the progress indicator can be controlled in multiple ways:
+/// 1.  By the `isBusy` state of the provided ViewModel (if no [busyObject] or [busy] flag is set).
+/// 2.  By a specific busy state within the ViewModel, using the [busyObject] property.
+/// 3.  Directly, by providing a boolean value to the [busy] property. The [busy]
+///     property takes precedence if provided.
 ///
 /// **Configuration:**
 ///
@@ -71,6 +72,10 @@ class BackgroundProgress<T extends BaseViewModel> extends ViewModelWidget<T> {
   /// If provided, this will override `settings.messageStyle`.
   final TextStyle? messageStyle;
 
+  /// An optional boolean flag to directly control the busy state.
+  /// If provided, this takes precedence over the ViewModel's busy state.
+  final bool? busy;
+
   /// An optional object to listen to for busy state.
   /// If provided, the progress indicator will only be shown when the ViewModel is busy with this specific object.
   /// If null, the progress indicator will be shown whenever the ViewModel's `isBusy` property is true.
@@ -101,6 +106,7 @@ class BackgroundProgress<T extends BaseViewModel> extends ViewModelWidget<T> {
     this.progressIndicator,
     this.isChildVisibleWhileBusy,
     this.busyObject,
+    this.busy,
   });
 
   @override
@@ -147,7 +153,7 @@ class BackgroundProgress<T extends BaseViewModel> extends ViewModelWidget<T> {
     final backgroundBlurFilter = effectiveSettings.backgroundBlurFilter ??
         ImageFilter.blur(sigmaX: 5, sigmaY: 5);
 
-    final isBusy = busyObject == null ? viewModel.isBusy : viewModel.busy(busyObject);
+    final isBusy = busy ?? (busyObject == null ? viewModel.isBusy : viewModel.busy(busyObject));
 
     return AnimatedContainer(
       duration: const Duration(milliseconds: 2000),
